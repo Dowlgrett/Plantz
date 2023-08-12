@@ -1,0 +1,12 @@
+﻿using System.Collections;
+using UnityEngine;
+
+public abstract class Entity : MonoBehaviour    
+{
+    public enum EntityType
+    {
+        Plant,
+        Enemy
+    }
+    public abstract void DoAction();
+}
