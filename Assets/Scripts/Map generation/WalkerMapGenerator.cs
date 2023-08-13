@@ -6,21 +6,20 @@ using UnityEngine.Tilemaps;
 public class WalkerMapGenerator : MonoBehaviour
 {
     private Tilemap _tilemap;
+    [SerializeField] private GrassTile _ground;
 
-    [SerializeField] private Tile _ground;
+    public int WalkerCount;
+    public int WalkerSteps;
 
     public void Awake()
     {
-        _tilemap = FindObjectOfType<Tilemap>().GetComponent<Tilemap>();
-        GenerateMap(5, 5);
+        _tilemap = FindObjectOfType<Tilemap>();
+        _tilemap.CompressBounds();
+        GenerateMap(WalkerCount, WalkerSteps);
     }
-
-
-
-
     public void GenerateMap(int walkerCount, int walkerSteps)
     {
-        List<Walker> walkers = new List<Walker>();
+        List<Walker> walkers = new();
         for (int i = 0; i < walkerCount; i++)
         {
             walkers.Add(new Walker());
@@ -35,8 +34,5 @@ public class WalkerMapGenerator : MonoBehaviour
             }
             _tilemap.SetTile(new Vector3Int(walker.Position.x, walker.Position.y, 0), _ground);
         }
-
-
     }
-
 }

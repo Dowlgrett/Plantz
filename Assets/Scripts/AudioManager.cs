@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource plantPlaced;
-    public AudioSource energySupplied;
+    [SerializeField] [FormerlySerializedAs("plantPlaced")] private AudioSource _plantPlaced;
+    [SerializeField] [FormerlySerializedAs("energySupplied")] private AudioSource _energySupplied;
     [SerializeField] private PlantPlacer _plantPlacer;
     public VoidChannelSO EnergySupplied;
 
@@ -13,19 +14,15 @@ public class AudioManager : MonoBehaviour
     {
         _plantPlacer.PlantPlaced += OnPlantPlaced;
         EnergySupplied.EventRaised += OnEnergySupplied;
-
-
     }
 
-    void OnPlantPlaced()
+    private void OnPlantPlaced()
     {
-        plantPlaced.Play();
+        _plantPlaced.Play();
     }
 
-    void OnEnergySupplied()
+    private void OnEnergySupplied()
     {
-        energySupplied.Play();
+        _energySupplied.Play();
     }
-
-
 }

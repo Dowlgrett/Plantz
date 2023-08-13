@@ -16,4 +16,4 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 6b37aa09a379e174a81f2cd72bc69b6e, type: 3}
   _cost: 1
   _description: Does something hurtful I guess
-  _plantPrefab: {fileID: 979272384910484454, guid: 095d4d8c07269ad4ca47b97dc5274950, type: 3}
+  _plantPrefab: {fileID: -4232370134702981822, guid: ea9d70a7b5756b840a0e5c4d715a2a52, type: 3}

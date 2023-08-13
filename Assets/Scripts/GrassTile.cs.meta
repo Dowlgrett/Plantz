@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: f1ca304e226147945ae3d1120ddbd39a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - tileGameObject: {fileID: 3760224498187977484, guid: ca3e78a6331019441b343b1c3381a378, type: 3}
+  - sprite: {fileID: 690674855, guid: 5ef6b77596243634e9e65af5a3f41e58, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

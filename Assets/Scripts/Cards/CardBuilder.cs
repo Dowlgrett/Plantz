@@ -11,5 +11,4 @@ public class CardBuilder : MonoBehaviour
         card.transform.SetParent(parent, false);
         return card;
     }
-    //Transform.SetParent method with the worldPositionStays parameter set to false.
 }

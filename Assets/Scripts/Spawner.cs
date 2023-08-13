@@ -14,22 +14,21 @@ public class Spawner : MonoBehaviour
     {
         List<Vector3> spawnPositions = GetSpawnPositions(_tilemap);
         
-        foreach (Vector3 spawnPosition in spawnPositions)
+        for (int i = 0; i < 5; ++i)
         {
+            var spawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
             Instantiate(_prefab, spawnPosition, Quaternion.identity);
         }
+
+
+
     }
-
-
     private List<Vector3> GetSpawnPositions(Tilemap tilemap)
     {
         List<Vector3Int> tilePositions = new();
         List<Vector3> spawnPositions = new();
-        BoundsInt bounds = tilemap.cellBounds;
-        
-        Vector3Int[] directions = new Vector3Int[] {Vector3Int.up, Vector3Int.down, Vector3Int.left, Vector3Int.right};
-        
-        
+        BoundsInt bounds = tilemap.cellBounds;      
+        Vector3Int[] directions = new Vector3Int[] {Vector3Int.up, Vector3Int.down, Vector3Int.left, Vector3Int.right}; 
         
         for (int x = bounds.x; x < bounds.x + bounds.size.x; x++)
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,5 +14,16 @@ public class GrassTile : TileBase
         tileData.gameObject = tileGameObject;
         tileData.sprite = sprite;
     }
+
+    #if UNITY_EDITOR
+    [MenuItem("Assets/Create/GrassTile")]
+    public static void CreateGrassTile()
+    {
+        string path = EditorUtility.SaveFilePanelInProject("Save Grass Tile", "New Grass Tile", "Asset", "Save Grass Tile", "Assets");
+        if (path == "")
+            return;
+        AssetDatabase.CreateAsset(CreateInstance<GrassTile>(), path);
+    }
+    #endif
 
 }

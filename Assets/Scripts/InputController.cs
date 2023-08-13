@@ -13,7 +13,5 @@ public class InputController : MonoBehaviour
         ClickedToPlant?.Invoke(position);
     }
 
-    public event Action<Vector3> ClickedToPlant;
-
-    
+    public event Action<Vector3> ClickedToPlant;   
 }

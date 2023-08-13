@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Hand : MonoBehaviour
 {
     public static Hand instance { get; private set; }
-
+    public Card SelectedCard => _selectedCard;
+    private Card _selectedCard;
+    [SerializeField] private List<Card> _cards;
     [SerializeField] private CardBuilder _cardBuilder;
-
     private void Awake()
     {
         if (instance != null && instance == this)
@@ -20,9 +21,6 @@ public class Hand : MonoBehaviour
             instance = this;
         }
     }
-
-
-
     private void Start()
     {
         foreach (Card card in _cards)
@@ -30,20 +28,9 @@ public class Hand : MonoBehaviour
             _cardBuilder.AddCardAsChildToParent(card.CardSO, GameObject.Find("Hand").transform);
         }
     }
-
-    private Card _selectedCard;
-
-    [SerializeField] private List<Card> _cards;
-
-
-   
-
     public Card SelectCard(Card card)
     {
         _selectedCard = card;
         return _selectedCard;
     }
-    public Card SelectedCard => _selectedCard;
-
- 
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: c73dd48bbe701b94b8fc616b06f3b18c, type: 3}
   _cost: 1
   _description: Grants 1 energy at the beginning of the next turn.
-  _plantPrefab: {fileID: 3115652556726722017, guid: 223dd0d607f489e45ae8f9ba3813f617, type: 3}
+  _plantPrefab: {fileID: -1605411803889058443, guid: ad34ff624dc5d1a4db032585597de761, type: 3}

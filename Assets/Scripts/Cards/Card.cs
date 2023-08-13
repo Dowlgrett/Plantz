@@ -20,13 +20,13 @@ public class Card : MonoBehaviour, IPointerClickHandler
         _cardSO = cardSO;
     }
    
-    [SerializeField] private Color _defaultColor = Color.white;
+    [SerializeField] private readonly Color _defaultColor = Color.white;
     public Color DefaultColor => _defaultColor;
 
-    [SerializeField] private Color _selectedColor = Color.green;
+    [SerializeField] private readonly Color _selectedColor = Color.green;
     public Color SelectedColor => _selectedColor;
 
-    //TODO: colors shoul be in the cardVisual class, so are image contents and text i think
+    //TODO: colors should be in the cardVisual class, so are image contents and text i think
 
     private Image[] _images;
     private TMP_Text[] _textComponents;

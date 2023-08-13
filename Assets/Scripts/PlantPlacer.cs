@@ -10,7 +10,6 @@ public class PlantPlacer : MonoBehaviour
     private Dictionary<GameObject, Vector3Int> _plantedPlants;
     private InputController _inputController;
     [SerializeField] private PlayerSO _playerSO;
-
     public event Action PlantPlaced;
 
     private void Awake()
@@ -18,43 +17,44 @@ public class PlantPlacer : MonoBehaviour
         _plantedPlants = new Dictionary<GameObject, Vector3Int>();
         _inputController = GetComponent<InputController>();
     }
-
     private void Start()
     {
         _tilemap = FindObjectOfType<Tilemap>();
-
     }
 
     private void OnEnable()
     {
         _inputController.ClickedToPlant += OnPlantPlaced;
     }
-
     private void OnDisable()
     {
         _inputController.ClickedToPlant -= OnPlantPlaced;
     }
-
     public void OnPlantPlaced(Vector3 mouseClickPosition)
     {
-        Vector3Int cell = _tilemap.WorldToCell(mouseClickPosition);
+        Vector3Int clickedCell = _tilemap.WorldToCell(mouseClickPosition);
 
-        if (_plantedPlants.ContainsValue(cell))
+        if (_plantedPlants.ContainsValue(clickedCell))
             return;
  
-        if (_tilemap.HasTile(_tilemap.WorldToCell(mouseClickPosition)))
+        if (_tilemap.HasTile(clickedCell))
         {     
-            Vector3 cellWorldPosition = _tilemap.GetCellCenterWorld(cell);           
+            Vector3 cellCenterWorldPosition = _tilemap.GetCellCenterWorld(clickedCell);           
             Card card = Hand.instance.SelectedCard;
 
             if (card != null && _playerSO.energy >= card.CardSO.Cost)
             {
-                _plantedPlants.Add(Instantiate(card.CardSO.PlantPrefab.gameObject, cellWorldPosition, Quaternion.identity), cell);
+                GameObject plant = Instantiate(card.CardSO.PlantPrefab.gameObject, cellCenterWorldPosition, Quaternion.identity);
+                _plantedPlants.Add(plant, clickedCell);
+                GameObject tileObject = _tilemap.GetInstantiatedObject(clickedCell);
+                if (tileObject.TryGetComponent<GrassTileObject>(out var grassTileObjectComponent))
+                {
+                    grassTileObjectComponent.SetObjectOnTile(plant);
+                }
+
                 PlantPlaced?.Invoke();
 
                 Destroy(card.gameObject);
-
-                //who is responsible for deselecting destroyed card? TODO: fix this
 
                 GameManager.instance.ChangeEnergyByAmount(-card.CardSO.Cost);
             }
