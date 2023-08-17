@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -5,37 +7,125 @@ using UnityEngine.Tilemaps;
 public class Enemy : Entity
 {
     private Tilemap _tilemap;
-    private Damageable _damageable;
+    private Health _damageable;
     private int _damage;
+
+    private Health _target;
 
     [SerializeField] private EnemySO _enemySO;
 
+    public event Action EnemyHit;
+
     public override void DoAction()
     {
-        var target = FindClosestTargetToAttack();
+        _target = FindAdjacentTargetToAttack();
 
-        if (target == null) //TODO: for test
+        if (_target == null)
+        {
+            _target = GetRandomTarget();
+
+            if (_target == null)
+                return;
+
+            if (_target.transform.position.x < transform.position.x)
+                Move(Vector3.left);
+            else if (_target.transform.position.x > transform.position.x)
+                Move(Vector3.right);
+            else if (_target.transform.position.y > transform.position.y)
+                Move(Vector3.up);
+            else if (_target.transform.position.y < transform.position.y)
+                Move(Vector3.down);
             return;
-        target.TakeDamage(_damage);
+        }
+        StartCoroutine(AttackAnimation(_target));
+        _target.TakeDamage(_damage);
+        EnemyHit?.Invoke();
+    }
+    private IEnumerator AttackAnimation(Health target)
+    {
+        var initialPosition = transform.position;
+        var targetPosition = target.transform.position;
+        float duration = .1f;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            transform.position = Vector3.Lerp(initialPosition, targetPosition, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = targetPosition;
+
+        timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            transform.position = Vector3.Lerp(targetPosition, initialPosition, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = initialPosition;
+    }
+
+    private IEnumerator MoveAnimation(Vector3 targetPosition)
+    {
+        var initialPosition = transform.position;
+        float duration = .1f;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            transform.position = Vector3.Lerp(initialPosition, targetPosition, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = targetPosition;
+    }
+
+
+    private void Move(Vector3 moveVector)
+    {
+        var targetPosition = transform.position + moveVector;
+        var enemies = FindObjectsOfType<Enemy>();
+        bool canMove = true;
+
+        foreach (var enemy in enemies)
+        {
+            if (enemy.transform.position == targetPosition)
+            {
+                canMove = false;
+            }
+        }
+        if (canMove)
+            StartCoroutine(MoveAnimation(targetPosition));
+    }
+
+    private Health GetRandomTarget() //TODO: can return null can be out of index range
+    {
+        List<Health> damageable = FindValidTargetsToAttack();
+        int randomIndex = UnityEngine.Random.Range(0, damageable.Count);
+        return damageable[randomIndex];
 
     }
 
     private void Awake()
     {
-        _damageable = GetComponent<Damageable>();
+        _damageable = GetComponent<Health>();
         _damageable.SetHealth(_enemySO.DefaultHealth);
         _damage = _enemySO.DefaultDamage;
     }
     private void Start()
     {
         _tilemap = FindObjectOfType<Tilemap>();
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        EnemyHit += audioManager.OnEnemyHit;
     }
 
-    private Damageable FindClosestTargetToAttack()
+    private Health FindAdjacentTargetToAttack()
     {
-        Damageable closestTarget = null;
+        Health closestTarget = null;
 
-        var directions = new Vector3[]
+        var directions = new Vector3[] //TODO: prioritizing up target first, should be randomized each time
         {
             Vector3.up,
             Vector3.down,
@@ -63,12 +153,12 @@ public class Enemy : Entity
                 }
             }
         }
-        return closestTarget; //TODO: potential null return
+        return closestTarget;
     }
 
-    private List<Damageable> FindValidTargetsToAttack()
+    private List<Health> FindValidTargetsToAttack()
     {
-        var validTargets = new List<Damageable>();
+        var validTargets = new List<Health>();
 
         //find empty tiles with no plants
         GrassTileObject[] tiles = FindObjectsOfType<GrassTileObject>();
@@ -77,8 +167,8 @@ public class Enemy : Entity
         {
             if (tile.ObjectOnTile != null) continue;
 
-            tile.TryGetComponent<Damageable>(out var validTile);
-            
+            tile.TryGetComponent<Health>(out var validTile);
+
             if (validTile != null) validTargets.Add(validTile);
         }
 
@@ -86,7 +176,7 @@ public class Enemy : Entity
 
         foreach (var plant in plants)
         {
-            if (plant.TryGetComponent<Damageable>(out var damageable))
+            if (plant.TryGetComponent<Health>(out var damageable))
             {
                 validTargets.Add(damageable);
             }

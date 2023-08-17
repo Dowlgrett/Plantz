@@ -11,7 +11,7 @@ public class Sunflower : Entity
 
     private void Awake()
     {
-        var damageable = GetComponent<Damageable>();
+        var damageable = GetComponent<Health>();
         damageable.SetHealth(_health);
     }
 

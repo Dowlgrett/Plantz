@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class TurnManager : MonoBehaviour
 {
     private bool _isPlayerTurn = true;
+    public float DelaySeconds = 0.1f;
 
     private Queue<Entity> turnQueue;
 
@@ -23,12 +24,12 @@ public class TurnManager : MonoBehaviour
             turnQueue.Enqueue(entity);
         }
     }
-    public void OnEndTurn(float delaySeconds)
+    public void OnEndTurn()
     {
         if (_isPlayerTurn)
-            StartCoroutine(PerformActionsOnEntities(delaySeconds));
+            StartCoroutine(PerformActionsOnEntities(DelaySeconds));
     }
-     private IEnumerator PerformActionsOnEntities(float delaySeconds)
+    private IEnumerator PerformActionsOnEntities(float delaySeconds)
     {
         _isPlayerTurn = false;
 

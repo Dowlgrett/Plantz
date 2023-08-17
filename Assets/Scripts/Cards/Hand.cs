@@ -9,6 +9,7 @@ public class Hand : MonoBehaviour
     public Card SelectedCard => _selectedCard;
     private Card _selectedCard;
     [SerializeField] private List<Card> _cards;
+    public List<Card> Cards => _cards;
     [SerializeField] private CardBuilder _cardBuilder;
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class Hand : MonoBehaviour
     {
         foreach (Card card in _cards)
         {
-            _cardBuilder.AddCardAsChildToParent(card.CardSO, GameObject.Find("Hand").transform);
+            _cardBuilder.AddCardAsChildToParent(card.CardSO, transform);
         }
     }
     public Card SelectCard(Card card)

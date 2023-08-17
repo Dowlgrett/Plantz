@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CardRenderer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Image _image;
 

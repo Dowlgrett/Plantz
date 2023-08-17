@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Damageable : MonoBehaviour
+public class Health : MonoBehaviour
 {
-    private int _health;
+    [SerializeField] private int _health;
 
-    public int Health => _health;
+    public int HealthPoints => _health;
 
     public event Action<int> HealthChanged;
 

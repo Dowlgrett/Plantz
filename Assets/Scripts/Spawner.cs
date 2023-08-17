@@ -13,8 +13,8 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         List<Vector3> spawnPositions = GetSpawnPositions(_tilemap);
-        
-        for (int i = 0; i < 5; ++i)
+
+        for (int i = 0; i < 2; ++i)
         {
             var spawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Count)];
             Instantiate(_prefab, spawnPosition, Quaternion.identity);
@@ -27,9 +27,9 @@ public class Spawner : MonoBehaviour
     {
         List<Vector3Int> tilePositions = new();
         List<Vector3> spawnPositions = new();
-        BoundsInt bounds = tilemap.cellBounds;      
-        Vector3Int[] directions = new Vector3Int[] {Vector3Int.up, Vector3Int.down, Vector3Int.left, Vector3Int.right}; 
-        
+        BoundsInt bounds = tilemap.cellBounds;
+        Vector3Int[] directions = new Vector3Int[] { Vector3Int.up, Vector3Int.down, Vector3Int.left, Vector3Int.right };
+
         for (int x = bounds.x; x < bounds.x + bounds.size.x; x++)
         {
             for (int y = bounds.y; y < bounds.y + bounds.size.y; y++)
@@ -48,8 +48,8 @@ public class Spawner : MonoBehaviour
             {
                 Vector3Int potentialSpawnPosition = tilePosition + direction;
                 Vector3 centeredSpawnCell = tilemap.GetCellCenterWorld(potentialSpawnPosition);
-                if (!tilemap.HasTile(potentialSpawnPosition) && !spawnPositions.Contains(centeredSpawnCell)) 
-                {                 
+                if (!tilemap.HasTile(potentialSpawnPosition) && !spawnPositions.Contains(centeredSpawnCell))
+                {
                     spawnPositions.Add(centeredSpawnCell);
                 }
             }
