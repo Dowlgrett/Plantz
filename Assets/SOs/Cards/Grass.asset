@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a8c70fe376962b45988d8305046917d, type: 3}
-  m_Name: Cactus
+  m_Name: Grass
   m_EditorClassIdentifier: 
-  _title: Cactus
-  _sprite: {fileID: 21300000, guid: 6b37aa09a379e174a81f2cd72bc69b6e, type: 3}
+  _title: Grass
+  _sprite: {fileID: 690674855, guid: 5ef6b77596243634e9e65af5a3f41e58, type: 3}
   _cost: 1
-  _description: Does something hurtful I guess
-  _prefab: {fileID: 9096119977578025313, guid: ea9d70a7b5756b840a0e5c4d715a2a52, type: 3}
+  _description: Plants grass tile.
+  _prefab: {fileID: 8116553406717698911, guid: db7b6e756a30dc642ae394d8a4bb9180, type: 3}
+  _cardType: 1

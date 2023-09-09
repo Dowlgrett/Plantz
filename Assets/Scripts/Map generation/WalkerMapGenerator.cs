@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class WalkerMapGenerator : MonoBehaviour
 {
     private Tilemap _tilemap;
-    [SerializeField] private GrassTile _ground;
+    [SerializeField] private GrassTile _grassTile;
 
     public int WalkerCount;
     public int WalkerSteps;
@@ -29,10 +29,10 @@ public class WalkerMapGenerator : MonoBehaviour
         {
             for (int i = 0; i < walkerSteps; i++)
             {
-                _tilemap.SetTile(new Vector3Int(walker.Position.x, walker.Position.y, 0), _ground);
+                _tilemap.SetTile(new Vector3Int(walker.Position.x, walker.Position.y, 0), _grassTile);
                 walker.MakeRandomMove();
             }
-            _tilemap.SetTile(new Vector3Int(walker.Position.x, walker.Position.y, 0), _ground);
+            _tilemap.SetTile(new Vector3Int(walker.Position.x, walker.Position.y, 0), _grassTile);
         }
     }
 }

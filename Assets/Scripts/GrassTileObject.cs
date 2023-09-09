@@ -23,8 +23,7 @@ public class GrassTileObject : MonoBehaviour
         _objectOnTile = objectOnTile;
     }
     private void OnDestroy()
-    {
-        _tilemap.SetTile(_tilemap.WorldToCell(transform.position), null);
+    {    
+        _tilemap.SetTile(_tilemap.WorldToCell(transform.position), null);      
     }
-
 }

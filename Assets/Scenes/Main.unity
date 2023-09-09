@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b186b1c0648aac46a559c95a57d6e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ground: {fileID: 11400000, guid: 8027b50880945164092123d714c00575, type: 2}
+  _grassTile: {fileID: 11400000, guid: 8027b50880945164092123d714c00575, type: 2}
   WalkerCount: 5
   WalkerSteps: 5
 --- !u!4 &125776009
@@ -301,8 +301,6 @@ MonoBehaviour:
   _plantPlaced: {fileID: 252825255}
   _energySupplied: {fileID: 252825258}
   _enemyHit: {fileID: 252825259}
-  _plantPlacer: {fileID: 1854687142}
-  EnergySupplied: {fileID: 11400000, guid: 8291cf73c9efc6a4da241bf963ee1bdb, type: 2}
 --- !u!4 &252825257
 Transform:
   m_ObjectHideFlags: 0
@@ -630,6 +628,128 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &456422665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 456422666}
+  - component: {fileID: 456422669}
+  - component: {fileID: 456422668}
+  - component: {fileID: 456422670}
+  - component: {fileID: 456422671}
+  m_Layer: 5
+  m_Name: RewardScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &456422666
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456422665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1133377301}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.00012207031, y: -0.000030517578}
+  m_SizeDelta: {x: 1077.45, y: 542.33997}
+  m_Pivot: {x: 0.49999997, y: 0.5}
+--- !u!114 &456422668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456422665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.09411765}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &456422669
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456422665}
+  m_CullTransparentMesh: 1
+--- !u!114 &456422670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456422665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 100
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &456422671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456422665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f758fac431bcc4ba51a8434de5e524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewardCardPrefab: {fileID: 7723207065164182584, guid: ff4d407d471b0e444b4dfada5df30607, type: 3}
+  _possibleRewards:
+  - {fileID: 11400000, guid: 45d4e91d3c6af05408653ebddd7ac416, type: 2}
+  - {fileID: 11400000, guid: d500a0b495b0775468739e0f1b2b9469, type: 2}
+  - {fileID: 11400000, guid: 740b16b5a2c663d44a924a8eaa44aa5b, type: 2}
+  _rewardCount: 3
 --- !u!1 &518994296
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +906,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1.4066, y: 1.4066, z: 1.4066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -867,8 +987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b069131dc38d96548abe054d8da10550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyChanged: {fileID: 11400000, guid: 2eb52d3c81b23ed48a53487c0338da9b, type: 2}
   player: {fileID: 11400000, guid: a24d66f1866a61844af432b2048e6eda, type: 2}
+  _endTurnButton: {fileID: 1846221334}
 --- !u!4 &896065022
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,6 +1234,7 @@ RectTransform:
   - {fileID: 2067181032}
   - {fileID: 1122677870}
   - {fileID: 1846221333}
+  - {fileID: 456422666}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1151,7 +1272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22be8512447e9f49a130fffe517122b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyChanged: {fileID: 11400000, guid: 2eb52d3c81b23ed48a53487c0338da9b, type: 2}
   _playerSO: {fileID: 11400000, guid: a24d66f1866a61844af432b2048e6eda, type: 2}
 --- !u!4 &1314021797
 Transform:
@@ -1197,7 +1317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4359100daff3d0e4d8f030a94a96f336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelaySeconds: 0.5
+  DelaySeconds: 0.1
 --- !u!4 &1599728753
 Transform:
   m_ObjectHideFlags: 0
@@ -1413,9 +1533,9 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0.02
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -1558,6 +1678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSO: {fileID: 11400000, guid: a24d66f1866a61844af432b2048e6eda, type: 2}
+  _grassTile: {fileID: 11400000, guid: 8027b50880945164092123d714c00575, type: 2}
 --- !u!114 &1854687143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1571,11 +1692,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cards:
-  - {fileID: 8748866567309570404, guid: 869ecd33f2e6ea047b2a7c1574313e51, type: 3}
-  - {fileID: 8748866567309570404, guid: 869ecd33f2e6ea047b2a7c1574313e51, type: 3}
-  - {fileID: 8748866567309570404, guid: 869ecd33f2e6ea047b2a7c1574313e51, type: 3}
-  - {fileID: 8748866567309570404, guid: 869ecd33f2e6ea047b2a7c1574313e51, type: 3}
-  - {fileID: 8748866567309570404, guid: 869ecd33f2e6ea047b2a7c1574313e51, type: 3}
+  - {fileID: 4605624800111443186, guid: d0e63bdec1048164281afde1e8b2de4b, type: 3}
+  - {fileID: 4605624800111443186, guid: 97399ed62fdf0144083423bb90e71424, type: 3}
+  - {fileID: 4605624800111443186, guid: 9886aacb7604d2e44b467c906ed03e0e, type: 3}
   _cardBuilder: {fileID: 1854687145}
 --- !u!4 &1854687144
 Transform:
@@ -1604,7 +1723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311125c1b75d692469d903f586350eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardPrefab: {fileID: 2479209634995033766, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
+  _cardPrefab: {fileID: 1653722330828568654, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
 --- !u!1 &1881209908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,12 +1824,12 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 128
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 5
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1

@@ -41,6 +41,8 @@ public class Enemy : Entity
         _target.TakeDamage(_damage);
         EnemyHit?.Invoke();
     }
+
+    //TODO: animations aren't the enemy logic, put it somewhere else
     private IEnumerator AttackAnimation(Health target)
     {
         var initialPosition = transform.position;
@@ -100,11 +102,16 @@ public class Enemy : Entity
             StartCoroutine(MoveAnimation(targetPosition));
     }
 
-    private Health GetRandomTarget() //TODO: can return null can be out of index range
+    private Health GetRandomTarget()
     {
         List<Health> damageable = FindValidTargetsToAttack();
-        int randomIndex = UnityEngine.Random.Range(0, damageable.Count);
-        return damageable[randomIndex];
+
+        if (damageable.Count > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, damageable.Count);
+            return damageable[randomIndex];
+        }
+        else return null;
 
     }
 

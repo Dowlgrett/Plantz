@@ -27,7 +27,11 @@ public class TurnManager : MonoBehaviour
     public void OnEndTurn()
     {
         if (_isPlayerTurn)
+        {
+            EventManager.Instance.TriggerEndTurnButtonPressedEvent();
             StartCoroutine(PerformActionsOnEntities(DelaySeconds));
+        }
+            
     }
     private IEnumerator PerformActionsOnEntities(float delaySeconds)
     {
@@ -43,12 +47,17 @@ public class TurnManager : MonoBehaviour
         while (turnQueue.Count > 0)
         {
             Entity currentEntity = turnQueue.Dequeue();
-            currentEntity.DoAction();
-            yield return new WaitForSeconds(delaySeconds);
+
+            if (currentEntity != null)
+            {
+                currentEntity.DoAction();
+                yield return new WaitForSeconds(delaySeconds);
+            }
         }
 
         playerInput.currentActionMap.Enable();
         _isPlayerTurn = true;
+        EventManager.Instance.TriggerPlayerTurnStartedEvent();
     }
 
     public void OnSpawn(Entity newEnemy) //should spawn by listening to an event of a spawnManager

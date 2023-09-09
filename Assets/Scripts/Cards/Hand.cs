@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Hand : MonoBehaviour
 {
     public static Hand instance { get; private set; }
     public Card SelectedCard => _selectedCard;
+    
     private Card _selectedCard;
+
     [SerializeField] private List<Card> _cards;
     public List<Card> Cards => _cards;
     [SerializeField] private CardBuilder _cardBuilder;
@@ -22,16 +25,26 @@ public class Hand : MonoBehaviour
             instance = this;
         }
     }
-    private void Start()
+
+    private void Update()
     {
-        foreach (Card card in _cards)
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+
+        if (selected != null && selected.TryGetComponent(out Card card)) {
+            _selectedCard = card;
+        }
+        if (selected == null)
         {
-            _cardBuilder.AddCardAsChildToParent(card.CardSO, transform);
+            _selectedCard = null;
         }
     }
-    public Card SelectCard(Card card)
+
+    public void AddCardToHand(CardSO addedCard)
     {
-        _selectedCard = card;
-        return _selectedCard;
+        var transform = FindObjectOfType<HandRenderer>().transform;
+        _cardBuilder.AddCardAsChildToParent(addedCard, transform);
     }
+
+
+
 }

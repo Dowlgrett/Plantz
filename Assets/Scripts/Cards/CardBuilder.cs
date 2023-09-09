@@ -6,7 +6,7 @@ public class CardBuilder : MonoBehaviour
 
     public Card AddCardAsChildToParent(CardSO cardSO, Transform parent)
     {
-        Card card = Instantiate(_cardPrefab);
+        Card card = Instantiate(_cardPrefab, parent);
         card.InitializeCard(cardSO);
         card.transform.SetParent(parent, false);
         return card;

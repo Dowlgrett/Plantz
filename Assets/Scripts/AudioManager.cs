@@ -9,28 +9,23 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _energySupplied;
     [SerializeField] private AudioSource _enemyHit;
 
-    [SerializeField] private PlantPlacer _plantPlacer;
-
-    public VoidChannelSO EnergySupplied;
-
     private void Start()
     {
-        _plantPlacer.PlantPlaced += OnPlantPlaced;
-        EnergySupplied.EventRaised += OnEnergySupplied;
-
+        EventManager.Instance.PlantPlacedEvent += OnCardEntityPlaced;
+        EventManager.Instance.EnergySuppliedEvent += OnEnergySupplied;
     }
 
-    private void OnPlantPlaced()
+    private void OnCardEntityPlaced(GameObject entity, Vector3Int cell)
     {
         _plantPlaced.Play();
     }
 
-    public void OnEnemyHit() //TODO: public
+    public void OnEnemyHit() //TODO: why is it public
     {
         _enemyHit.Play();
     }
 
-    private void OnEnergySupplied()
+    private void OnEnergySupplied(int energyAmount)
     {
         _energySupplied.Play();
     }

@@ -1,17 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
-using UnityEngine.Android;
 
-public class Card : MonoBehaviour, IPointerClickHandler
+public class Card : MonoBehaviour
 {
-    [SerializeField] private CardSO _cardSO;
+    public int Cost { get; protected set; }
+
+
+    [SerializeField] protected CardSO _cardSO;
     public CardSO CardSO => _cardSO;
-    
-    public event Action<Card> DeselectEvent;
-    public event Action<Card> SelectEvent;
+    private Image[] _images;
+    private TMP_Text[] _textComponents;
+
 
     public void InitializeCard(CardSO cardSO)
     {
@@ -19,17 +19,6 @@ public class Card : MonoBehaviour, IPointerClickHandler
         UpdateTextContents(cardSO);
         _cardSO = cardSO;
     }
-   
-    [SerializeField] private readonly Color _defaultColor = Color.white;
-    public Color DefaultColor => _defaultColor;
-
-    [SerializeField] private readonly Color _selectedColor = Color.green;
-    public Color SelectedColor => _selectedColor;
-
-    //TODO: colors should be in the cardVisual class, so are image contents and text i think
-
-    private Image[] _images;
-    private TMP_Text[] _textComponents;
 
     private void Awake()
     {
@@ -64,28 +53,4 @@ public class Card : MonoBehaviour, IPointerClickHandler
             }
         }
     }
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        bool clickedCardIsSelectedCard = Hand.instance.SelectedCard == this;
-        bool someCardIsSelected = Hand.instance.SelectedCard != null;
-
-        if (clickedCardIsSelectedCard)
-        {
-            Hand.instance.SelectedCard.DeselectEvent?.Invoke(this);
-            Hand.instance.SelectCard(null);
-        }
-        else if (someCardIsSelected)
-        {
-            Hand.instance.SelectedCard.DeselectEvent?.Invoke(this);
-            Hand.instance.SelectCard(this);
-            Hand.instance.SelectedCard.SelectEvent?.Invoke(this);
-        }
-        else
-        {
-            Hand.instance.SelectCard(this);
-            Hand.instance.SelectedCard.SelectEvent?.Invoke(this);
-        }
-    }
-
-
 }

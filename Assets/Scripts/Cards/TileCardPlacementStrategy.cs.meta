@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: 1c8ab16297d421b4996efb2f7123535f
+guid: 37e133816fceba64882ae91464dedc59
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _grassTile: {fileID: 11400000, guid: 33cddbf555de28248925245682949d2a, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

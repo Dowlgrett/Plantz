@@ -6,12 +6,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 public class InputController : MonoBehaviour
-{ 
+{
     private void OnPlace()
     {
         Vector3 position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        ClickedToPlant?.Invoke(position);
+        EventManager.Instance.TriggerClickedToPlantEvent(position);
     }
-
-    public event Action<Vector3> ClickedToPlant;   
 }

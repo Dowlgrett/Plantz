@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5784992803518515538
+--- !u!1001 &2961473993555952828
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -21,23 +21,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1179827879058332360, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1179827879058332360, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1179827879058332360, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1179827879058332360, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1179827879058332360, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 1179827879058332360, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_SizeDelta.y
@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1179827879058332360, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.05999756
       objectReference: {fileID: 0}
     - target: {fileID: 1179827879058332360, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -91,37 +91,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2189963715710882966, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2189963715710882966, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 6.2863007
-      objectReference: {fileID: 0}
+    - target: {fileID: 1653722330828568654, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
+      propertyPath: _cardSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 45d4e91d3c6af05408653ebddd7ac416, type: 2}
     - target: {fileID: 2479209634995033766, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: _cardSO
       value: 
       objectReference: {fileID: 11400000, guid: 45d4e91d3c6af05408653ebddd7ac416, type: 2}
     - target: {fileID: 3777056461334135525, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
       propertyPath: m_Name
-      value: Cactus Card
-      objectReference: {fileID: 0}
-    - target: {fileID: 7395003563915095906, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7395003563915095906, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -19.623001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120719754072790589, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
-      propertyPath: m_FlexibleWidth
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120719754072790589, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}
-      propertyPath: m_PreferredWidth
-      value: -1
+      value: Cactus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9680d34b5241c694b9eda1ea99b8e333, type: 3}

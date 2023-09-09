@@ -5,24 +5,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance { get; private set; }
-    public IntChannelSO energyChanged;
+    public static GameManager Instance { get; private set; }
     [SerializeField] private PlayerSO _playerSO;
+
+    private EventManager _eventManager; 
 
     private void Awake()
     {
-        if (instance != null && instance == this)
+        _eventManager = new EventManager();
+
+        if (Instance != null && Instance == this)
         {
             Destroy(this);
         } 
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
     public void ChangeEnergyByAmount(int amount)
     {
         _playerSO.energy += amount;
-        instance.energyChanged.Raise(_playerSO.energy);
+        EventManager.Instance.TriggerEnergyChangedEvent(_playerSO.energy);
     }
 }
